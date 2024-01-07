@@ -11,29 +11,51 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Row(children: [
-          Container(
-            margin: EdgeInsets.only(right: 20),
-            width: 250,
-            height: 250,
-            color: Colors.blue,
-            child: Center(
-              child: Text("Hello World", style: TextStyle(color: Colors.white, fontSize: 30))
-            )
-          ),
-          Container(
-            width: 250,
-            height: 250,
-            color: Colors.amber,
-            child: Center(
-              child: Text("Hello World", style: TextStyle(color: Colors.white, fontSize: 30))
-            )
-          )
-        ]),
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text("Belajar Flutter"),
+              centerTitle: false,
+              backgroundColor: Colors.blue,
+            ),
+            body: Column(
+              children: [
+                Container(
+                  height: 170,
+                  color: Colors.green,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 20,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: 100,
+                        width: 100,
+                        color: index % 2 == 0 ? Colors.blue : Colors.amber,
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.all(10),
+                      );
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 100,
+                            color: index % 2 == 0 ? Colors.blue : Colors.amber,
+                            alignment: Alignment.center,
+                          ),
+                          Text("Hello World", style: TextStyle(fontSize: 25)),
+                        ],
+                      ),
+                    );
+                  }),
+                ),
+              ],
+            )));
   }
 }
-

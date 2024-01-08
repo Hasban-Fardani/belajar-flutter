@@ -1,3 +1,4 @@
+import 'package:belajar_flutter/widgets/btn_counter.dart';
 import 'package:flutter/material.dart';
 import './widgets/box.dart';
 
@@ -11,51 +12,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            appBar: AppBar(
-              title: Text("Belajar Flutter"),
-              centerTitle: false,
-              backgroundColor: Colors.blue,
-            ),
-            body: Column(
-              children: [
-                Container(
-                  height: 170,
-                  color: Colors.green,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 20,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: 100,
-                        width: 100,
-                        color: index % 2 == 0 ? Colors.blue : Colors.amber,
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.all(10),
-                      );
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: ListView.builder(itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 100,
-                            color: index % 2 == 0 ? Colors.blue : Colors.amber,
-                            alignment: Alignment.center,
-                          ),
-                          Text("Hello World", style: TextStyle(fontSize: 25)),
-                        ],
-                      ),
-                    );
-                  }),
-                ),
-              ],
-            )));
+      home: Scaffold(
+        appBar: AppBar(
+          leading: FlutterLogo(),
+          title: Text("Belajar Flutter"),
+          centerTitle: false,
+        ),
+        body: Center(
+          child: ElevatedButton(
+            child: Text("Show Dialog"),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => Text("Ini dialog")
+              );
+            },
+          )
+        )
+      )
+    ); 
   }
 }
